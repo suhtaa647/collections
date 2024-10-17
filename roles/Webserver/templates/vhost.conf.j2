@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+ServerName {{ item['name'] }}
+DocumentRoot {{ item['docroot'] }}
+ServerAlias www.{{ item['name'] }}
+
+<Directory {{ item['docroot'] }}>
+  require all granted
+</Directory>
+
+</VirtualHost>

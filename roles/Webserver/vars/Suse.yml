@@ -1,0 +1,4 @@
+---
+# Variables for the Suse family
+webserver_package_state: latest
+apache_vhost_dir: /etc/apache2/vhosts.d

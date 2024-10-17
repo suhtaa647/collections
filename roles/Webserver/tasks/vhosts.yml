@@ -1,0 +1,27 @@
+---
+# Variablen werden distributionsspezifisch gesetzt
+- name: 'Include distribution-specific variables.'
+  ansible.builtin.include_vars:
+    file: "{{ ansible_os_family }}.yml"
+
+- name: Ensure existence of Docroot
+  ansible.builtin.file:
+    name: "{{ item['docroot'] }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ apache_vhosts }}"
+
+- name: Make sure homepage is present
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: "{{ item['docroot'] }}/index.html"
+    mode: "0644"
+  loop: "{{ apache_vhosts }}"
+
+- name: Have Apache VHost Configuration installed
+  ansible.builtin.template:
+    src: vhost.conf.j2
+    dest: "{{ apache_vhost_dir }}/{{ item['name'] }}.conf"
+    mode: "0644"
+  loop: "{{ apache_vhosts }}"
+  notify: Reload Webserver

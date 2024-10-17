@@ -1,0 +1,19 @@
+---
+# tasks file for Webserver
+
+- name: 'Include distribution-specific variables.'
+  ansible.builtin.include_vars:
+    file: "{{ ansible_os_family }}.yml"
+
+- name: Make sure that the webserver package is installed
+  ansible.builtin.package:
+    name: "{{ webserver_package }}"
+    state: "{{ webserver_package_state }}"
+    # Falls die Webserver-Package neu installiert wurde, oder upgedatet wurde,
+    # soll der Webserver neu gestartet werden
+  notify: Restart Webserver
+
+- name: Make sure webserver is running
+  ansible.builtin.service:
+    name: "{{ webserver_service }}"
+    state: started

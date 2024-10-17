@@ -1,0 +1,13 @@
+---
+# handlers file for Webserver
+# Falls der Webserver neu installiert wurde oder aktualisiert wurde
+- name: Restart Webserver
+  ansible.builtin.service:
+    name: "{{ webserver_service }}"
+    state: restarted
+
+# Falls nur die Konfiguration des Webservers verändert wurde
+- name: Reload Webserver
+  ansible.builtin.service:
+    name: "{{ webserver_service }}"
+    state: reloaded

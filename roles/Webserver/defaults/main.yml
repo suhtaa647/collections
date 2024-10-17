@@ -1,0 +1,5 @@
+---
+# defaults file for Webserver
+webserver_service: apache2
+webserver_package: apache2
+webserver_package_state: present

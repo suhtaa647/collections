@@ -1,0 +1,9 @@
+---
+# vars file for Webserver
+apache_vhosts:
+  - name: websrv1
+    docroot: /srv/www/websrv1
+  - name: gogle.com
+    docroot: /srv/www/gogle
+  - name: hooogle.com
+    docroot: /srv/www/neuecoolewebsite

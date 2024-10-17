@@ -1,0 +1,9 @@
+# tasks file for Webserver
+
+- name: 'Ensure the webserver is available'
+  ansible.builtin.include_tasks:
+    file: ./server.yml
+
+- name: 'Ensure vhosts are created'
+  ansible.builtin.include_tasks:
+    file: ./vhosts.yml

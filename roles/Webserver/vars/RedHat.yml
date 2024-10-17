@@ -1,0 +1,5 @@
+---
+# Variables for Red Hat Family
+webserver_service: httpd
+webserver_package: httpd
+apache_vhost_dir: /etc/httpd/conf.d
