@@ -1,0 +1,8 @@
+---
+# implement Role Webserver
+- name: Rollenaufruf
+  hosts: all
+  roles:
+    - Webserver
+    # ../roles/Webserver
+  become: true
